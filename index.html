@@ -1379,15 +1379,15 @@ function submit() {
     extra: getValue('q-extra')
   };
 
-  // Convertir objeto a FormData para mejor compatibilidad
-  const formData = new FormData();
+  // Crear URL con parámetros
+  const params = new URLSearchParams();
   Object.keys(datosParaSheet).forEach(key => {
-    formData.append(key, datosParaSheet[key]);
+    params.append(key, datosParaSheet[key]);
   });
 
   fetch('https://script.google.com/macros/s/AKfycbxNH7tTSHb2Mw2V3qFo9efmgJjRnjCwNdJfxcq4m75qXVuA2ihqnHoQaO58_TkJZO3d3g/exec', {
     method: 'POST',
-    body: formData,
+    body: params,
     mode: 'no-cors'
   })
     .then(() => {
